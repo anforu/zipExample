@@ -6,29 +6,50 @@
  * @flow
  */
 
-import React from 'react';
+import React, { Component } from 'react'
 import { View, Text } from 'react-native';
-import { DocumentDirectoryPath } from 'react-native-fs';
 
 import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive'
 
+import { MainBundlePath, DocumentDirectoryPath } from 'react-native-fs'
+
 const targetPath = `${DocumentDirectoryPath}/myFile.zip`
-const sourcePath = DocumentDirectoryPath;
+const sourcePath = DocumentDirectoryPath
 
-zip(sourcePath, targetPath)
-.then((path) => {
-  console.log(`zip completed at ${path}`)
-})
-.catch((error) => {
-  console.error(error)
-})
 
-const App = () => {
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.compessZipFile()
+   // this.decompessZipFile()
+  }
+  compessZipFile = () => {
+    console.log('TargetPath:', targetPath)
+    zip(sourcePath, targetPath)
+      .then((path) => {
+        console.log(`zip completed at ${path}`)
+        //this.decompessZipFile()
+      })
+      .catch((error) => {
+        console.log('Error to try to decompess file', error)
+      })
+  }
+
+  decompessZipFile = () => {
+    unzip(sourcePath, targetPath )//with unzip(targetPath, sourcePath) show success but does not show any changes to the file
+      .then((path) => {
+        console.log(`unzip completed at ${path}`)
+      })
+      .catch((error) => {
+        console.log('Error to unzip file',error)
+      })
+  }
+
+  render(){
   return (
     <View >
       <Text > Hello, world!</Text>
     </View>
   )
 }
-
-export default App;
+}
