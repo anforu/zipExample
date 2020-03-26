@@ -28,7 +28,7 @@ export default class App extends Component {
     zip(sourcePath, targetPath)
       .then((path) => {
         console.log(`zip completed at ${path}`)
-        //this.decompessZipFile()
+        this.decompessZipFile()
       })
       .catch((error) => {
         console.log('Error to try to decompess file', error)
