@@ -8,11 +8,12 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
+import { DocumentDirectoryPath } from 'react-native-fs';
 
 import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive'
 
 const targetPath = `${DocumentDirectoryPath}/myFile.zip`
-const sourcePath = DocumentDirectoryPath
+const sourcePath = DocumentDirectoryPath;
 
 zip(sourcePath, targetPath)
 .then((path) => {

@@ -34,7 +34,6 @@ target 'zipExample' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNZipArchive', :path => '../node_modules/react-native-zip-archive'
 
   target 'zipExampleTests' do
     inherit! :search_paths
