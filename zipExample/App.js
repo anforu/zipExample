@@ -36,7 +36,7 @@ export default class App extends Component {
   }
 
   decompessZipFile = () => {
-    unzip(sourcePath, targetPath )//with unzip(targetPath, sourcePath) show success but does not show any changes to the file
+    unzip(targetPath, `${sourcePath}/new_files`)//with unzip(targetPath, sourcePath) show success but does not show any changes to the file
       .then((path) => {
         console.log(`unzip completed at ${path}`)
       })
